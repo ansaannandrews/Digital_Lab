@@ -1,0 +1,60 @@
+module has(sum, carry, a, b);
+  output sum, carry;
+  input a, b;
+  
+  xor (sum, a, b);
+  and (carry, a, b);
+endmodule
+
+
+module had(sum, carry, a, b);
+  output sum, carry;
+  input a, b;
+
+  assign sum = a ^ b;
+  assign carry = a & b;
+endmodule
+
+
+module hab(sum, carry, a, b);
+  output reg sum, carry;
+  input a, b;
+
+  always @(a or b) begin
+    sum = a ^ b;
+    carry = a & b;
+  end
+endmodule
+
+
+
+
+module fas(output sum, carry, input a, b, c);
+  wire d, e, f;
+
+  xor g1(d, a, b);
+  xor g2(sum, d, c);
+  and g3(f, a, b);
+  and g4(e, d, c);
+  or g5(carry, f, e);
+endmodule
+
+
+module fad(sum, carry, a, b, c);
+  output sum, carry;
+  input a, b, c;
+
+  assign sum = a ^ b ^ c;
+  assign carry = (a & b) | (b & c) | (c & a);
+endmodule
+
+
+module fab(sum, carry, a, b, c);
+  output reg sum, carry;
+  input a, b, c;
+
+  always @(a or b or c) begin
+    sum = a ^ b ^ c;
+    carry = (a & b) | (b & c) | (c & a);
+  end
+endmodule
