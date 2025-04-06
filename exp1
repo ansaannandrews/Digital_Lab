@@ -28,13 +28,11 @@ endmodule
 
 
 
-module posdf (a, b, d, y);
+module posdf (a, b, c, d, y);
 
-input a, b, d;
+input a, b, c, d;
 output y;
 
-wire w1 = a | (~d);
-wire w2 = b  | d;
-assign y = w1 & w2;
+assign y = (a|(~d))&(b|d);
 
 endmodule
